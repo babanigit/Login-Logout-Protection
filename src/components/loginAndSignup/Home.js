@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // import firebase
 import { signOut } from "firebase/auth";
-import { database } from "../FirebaseConfig";
+import { database } from "../../FirebaseConfig";
 
 function Home() {
   // const location = useLocation()

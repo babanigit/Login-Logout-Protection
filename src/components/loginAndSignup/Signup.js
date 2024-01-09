@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // importing firebase
-import { database } from "../FirebaseConfig";
+import { database } from "../../FirebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Login() {

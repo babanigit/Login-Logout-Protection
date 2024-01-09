@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // importing firebase
-import { database } from "../FirebaseConfig";
+import { database } from "../../FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 
-import wallpaper2 from '../images/wallpaper2.jpg';
+// import wallpaper2 from '../images/wallpaper2.jpg';
 
 
 
@@ -91,7 +91,7 @@ function Login() {
         // src={wallpaper2}
         alt='/'
       />
-      <div className='bg-black/60 fixed top-0 left-0 w-full h-screen'></div>
+      <div className='bg-black/60 fixed top-0 left-0 w-full h-screen text-red-50 flex justify-center'></div>
       <div className='fixed w-full px-4 py-24 z-50'>
         <div className='max-w-[450px] h-[600px] mx-auto bg-black/75 text-white'>
           <div className='max-w-[320px] mx-auto py-16'>
@@ -125,7 +125,7 @@ function Login() {
               </div>
               <p className='py-4 mt-8'>
                 <span className='text-gray-600'>
-                 New to Netlix? 
+                 New to website?   
                 </span>{' '}
                 <Link to='/Signup'>Sign Up</Link>
               </p>
