@@ -17,19 +17,19 @@ function Login() {
   async function submit(e) {
     e.preventDefault();
 
-    createUserWithEmailAndPassword(database, email, password, name).then(
-      (data) => {
+    createUserWithEmailAndPassword(database, email, password, name)
+      .then((data) => {
         console.log(data, "authData");
-        history('/home')
-      }
-    ).catch(err=>{
-      alert(err.code)
-      history('/')
-    })
+        history("/home");
+      })
+      .catch((err) => {
+        alert(err.code);
+        history("/");
+      });
 
-    setEmail(" ")
-    setName(" ")
-    setPassword(" ")
+    setEmail(" ");
+    setName(" ");
+    setPassword(" ");
 
     // // try
     // try {
@@ -62,46 +62,71 @@ function Login() {
   }
 
   return (
-    <div className="login">
-      {console.log()}
-      <h1>Signup</h1>
+    <>
+      <div className=" w-full h-screen">
+        <div className=" bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
 
-      <form action="POST">
-        <input
-          type="name"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          placeholder="Name"
-          name="Name"
-        />
-        <input
-          type="email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          placeholder="Email"
-          name="Email"
-        />
-        <input
-          type="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          placeholder="Password"
-          name="Password"
-        />
+        <div className=" fixed w-full px-4 py-24 z-50">
 
-        {/* submit function */}
-        <input type="submit" onClick={submit} />
-      </form>
+        <div className='max-w-[450px] h-[600px] mx-auto bg-black/75 text-white'>
+          <div className='max-w-[320px] mx-auto py-16'>
+            <h1 className='text-3xl font-bold'>Sign Up</h1>
+          {console.log()}
+          <h1>Signup</h1>
 
-      <br />
-      <p>OR</p>
-      <br />
+          <form action="POST" className="w-full flex flex-col py-4">
+            <input
+                            className='p-3 my-2 bg-gray-700 rounded' 
 
-      <Link to="/">Login Page</Link>
-    </div>
+              type="name"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              placeholder="Name"
+              name="Name"
+            />
+            <input
+                                        className='p-3 my-2 bg-gray-700 rounded' 
+
+              type="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              placeholder="Email"
+              name="Email"
+            />
+            <input
+                                        className='p-3 my-2 bg-gray-700 rounded' 
+
+              type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              placeholder="Password"
+              name="Password"
+            />
+
+            {/* submit function */}
+            <button
+            className='bg-red-600 py-3 my-6 rounded font-bold'
+             type="submit" onClick={submit} > signup </button>
+          </form>
+
+        
+          <p>
+          <span className='text-gray-600'>
+                  Already have an account?
+                </span>{' '}
+
+          <Link to="/">Login Page</Link>
+
+          </p>
+        </div>
+        </div>
+      </div>
+      </div>
+      
+    </>
   );
 }
 

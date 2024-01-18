@@ -7,7 +7,7 @@ import { database } from "../../FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 
-// import wallpaper2 from '../images/wallpaper2.jpg';
+// import wallpaper2 from './images/wallpaper2.jpg';
 
 
 
