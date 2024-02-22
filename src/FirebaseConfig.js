@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth';
+import { config } from "./config";
 
 import { getFirestore } from 'firebase/firestore';
 
@@ -10,12 +11,12 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB1VExSlrVY1Ah6fgIXoALGfkN-Jkyqjq0",
-  authDomain: "neon-fort-374613.firebaseapp.com",
-  projectId: "neon-fort-374613",
-  storageBucket: "neon-fort-374613.appspot.com",
-  messagingSenderId: "767257243624",
-  appId: "1:767257243624:web:a637ef731ed8d5cc977e5d"
+  apiKey: config.apiKey1,
+  authDomain: config.apiKey1,
+  projectId: config.apiKey1,
+  storageBucket: config.apiKey1,
+  messagingSenderId: config.apiKey1,
+  appId: config.apiKey1
 };
 
 // Initialize Firebase

@@ -31,8 +31,9 @@ function Login() {
 
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem(email, name); //key : value
 
-      
+      history("/home");
     } catch (error) {
       console.log("user already registered");
       console.error(error);
