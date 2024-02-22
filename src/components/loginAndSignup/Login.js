@@ -12,28 +12,54 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 function Login() {
+
+  
     const history = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const [error, setError] = useState('')
 
+
+  // console.log(name, email, password);
+  // console.log(auth?.currentUser?.email)
 
     async function submit(e) {
         e.preventDefault();
 
-        signInWithEmailAndPassword(database, email, password).then(
-            (data) => {
-              console.log(data, "authData");
+        try {
+         
+
+          const userCredential =  await signInWithEmailAndPassword(database, email, password)
+      console.log(userCredential)
+      const user = userCredential.user;
+      console.log(user.accessToken)
+
+      localStorage.setItem('token',user.accessToken);
+      localStorage.setItem('user',JSON.stringify(user));
+
+
               history('/home')
-            }
-          ).catch(err=>{
-            alert(err.code)
 
-            setError(error.message)
+          
+        } catch (error) {
+          console.log("invalid details")
+          console.error(error)
 
-          })
+        }
+
+
+      //  .then(
+      //       (data) => {
+      //         console.log(data, "authData");
+      //         history('/home')
+      //       }
+      //     ).catch(err=>{
+      //       alert(err.code)
+
+      //       setError(error.message)
+
+      //     })
         
         // try {
         //     await axios

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // importing firebase
-import { database } from "../../FirebaseConfig";
+import { auth, database } from "../../FirebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
@@ -12,20 +12,39 @@ function Login() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  console.log(name, email, password);
+  // console.log(name, email, password);
+  console.log(auth?.currentUser?.email);
 
   async function submit(e) {
     e.preventDefault();
 
-    createUserWithEmailAndPassword(database, email, password, name)
-      .then((data) => {
-        console.log(data, "authData");
-        history("/home");
-      })
-      .catch((err) => {
-        alert(err.code);
-        history("/");
-      });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+        name
+      );
+      console.log(userCredential);
+      const user = userCredential.user;
+      console.log(user.accessToken);
+
+      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      
+    } catch (error) {
+      console.log("user already registered");
+      console.error(error);
+    }
+    // .then((data) => {
+    //   console.log(data, "authData");
+    //   history("/home");
+    // })
+    // .catch((err) => {
+    //   alert(err.code);
+    //   history("/");
+    // });
 
     setEmail(" ");
     setName(" ");
@@ -110,7 +129,7 @@ function Login() {
               </form>
               <p>
                 <span className="text-gray-600">Already have an account?</span>{" "}
-                <Link to="/">Login Page</Link>
+                <Link to="/ ">Login Page</Link>
               </p>
             </div>
           </div>

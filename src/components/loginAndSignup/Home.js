@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Navigate } from "react-router-dom";
 
 // import firebase
 import { signOut } from "firebase/auth";
@@ -12,6 +12,8 @@ function Home() {
   const handleClick = () => {
     signOut(database).then((val) => {
       console.log(val);
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       history("/");
     });
   };
