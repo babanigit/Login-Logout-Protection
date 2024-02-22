@@ -14,28 +14,17 @@ import Signup from "./components/loginAndSignup/Signup";
 import Home from "./components/loginAndSignup/Home";
 import Protection from "./components/loginAndSignup/Protection";
 import About from "./components/About";
+import PageNotFound from "./components/PageNotFound";
 
-// const  router= createBrowserRouter(
-
-//   createRoutesFromElements(
-//     <Route path="/" element={<Home/> } >
-
-//     <Route path="/" element={<Login />} />
-//           <Route path="/signup" element={<Signup />} />
-//           <Route path="/home" element={<Protection />}>
-//             <Route path="/home" element={<Home />} />
-//           </Route>
-
-//     </Route>
-//   )
-// )
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} />
+
+          <Route path="*" element={<PageNotFound />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Protection />}>
             <Route path="/home" element={<Home />} />
